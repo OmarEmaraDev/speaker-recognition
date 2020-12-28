@@ -1,26 +1,30 @@
 import numpy
-import loader
-import tensorflow as tf
+from loader import loadMFCCData, getSpeakerNames
+from model import computeModel, getProbabilityModel
 
-(trainingSamples, trainingLabels), (testingSamples, testingLabels) = loader.loadMFCCData()
-speakerNames = loader.getSpeakerNames()
+print("Computing MFCCs from dataset ...")
+print("")
+(trainingSamples, trainingLabels), (testingSamples, testingLabels) = loadMFCCData()
 
-model = tf.keras.Sequential([
-    tf.keras.layers.Flatten(input_shape = trainingSamples.shape[1:]),
-    tf.keras.layers.Dense(128, activation = "relu"),
-    tf.keras.layers.Dense(len(speakerNames))
-])
+print("Getting data set metadata ...")
+print("")
+speakerNames = getSpeakerNames()
 
-model.compile(optimizer = "adam",
-              loss = tf.keras.losses.SparseCategoricalCrossentropy(from_logits = True),
-              metrics = ["accuracy"])
+print("Computing model ...")
+print("")
+model = computeModel(trainingSamples, trainingLabels, len(speakerNames))
+print("")
 
-model.fit(trainingSamples, trainingLabels, epochs = 10)
+print("Evaluating model ...")
+print("")
+model.evaluate(testingSamples, testingLabels, verbose = 2)
+print("")
 
-testLoss, testAccuracy = model.evaluate(testingSamples,  testingLabels, verbose = 2)
+print("Getting probability model ...")
+print("")
+probabilityModel = getProbabilityModel(model)
 
-probabilityModel = tf.keras.Sequential([model, tf.keras.layers.Softmax()])
-
+print("Computing predictions ...")
+print("")
 predictions = probabilityModel.predict(testingSamples)
-
-print(speakerNames[numpy.argmax(predictions[0])] == speakerNames[testingLabels[0]])
+predictedLabels = numpy.argmax(predictions, axis = 1)
