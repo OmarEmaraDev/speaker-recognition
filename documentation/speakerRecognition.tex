@@ -343,8 +343,10 @@ First, our choice of the data set is the free spoken digit data set provided in
 different male English speakers at 8kHz sampling rate. The audio files are
 stored in \texttt{.wav} format and trimmed to have minimal silence at the ends
 of the audio, which makes this data set easy to work with. Additionally, we
-repeated some of the audio files to have a unified length across all files for
-easier processing.
+zero padded the files to have a constant length for easier future processing.
+Zero adding in the real domain only increase the spectral resolution in the
+frequency domain, which is where we extract the features, so this will not
+affect the integrity of the data.
 
 For feature extraction, we use the \texttt{python\_speech\_features} python
 library to compute the MFCCs of the audio files. The library provide a routine

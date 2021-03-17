@@ -30,7 +30,7 @@ def readCleanedUpSpeakerFiles():
     speakerFiles = readSpeakerFiles()
     maximumSamples = max(speakerFile.samples.shape for speakerFile in speakerFiles)
     for speakerFile in speakerFiles:
-        speakerFile.samples = numpy.resize(speakerFile.samples, maximumSamples)
+        speakerFile.samples.resize(maximumSamples)
     return speakerFiles
 
 def loadSpeakerFiles():
