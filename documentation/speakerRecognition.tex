@@ -76,8 +76,8 @@ sample is provided from a set of known set of persons that are stored as
 many speaker recognition. The set of persons can be classified as \emph{Open
 Set} or \emph{Closed Set}. A closed set is a set where the voice sample is
 guaranteed to match one model from the set. On the other hand, an open set is a
-set where no such grantee exist. One application for this system is labeling
-multi-speaker data as explained the following section.
+set where no such guarantee exist. One application for this system is labeling
+multi-speaker data as explained in the following section.
 
 \subsubsection{Speaker Detection}
 
@@ -96,12 +96,12 @@ systems were constructed, namely \autocite{Wilcox1994} and
 
 Aside from the aforementioned classification. It is possible to classify a
 speaker recognition system as either \emph{Text Depended} or \emph{Text
-Independent}. A text dependent system assumes the voice samples to spell a
-certain text while a text independent system make no assumptions about the
-spelled text. A text dependent system is typically more accurate, but in
-reality, such systems are not popular because in most applications the text is
-not known.  Authentication system, however, can make this assumption because
-the user records and inputs the voice sample real-time and voluntarily.
+Independent}. A text dependent system assumes the voice samples spell a certain
+text while a text independent system make no assumptions about the spelled
+text. A text dependent system is typically more accurate, but in reality, such
+systems are not popular because in most applications the text is not known.
+Authentication systems, however, can make this assumption because the user
+records and inputs the voice sample real-time and voluntarily.
 
 \subsection{Physiology}
 
@@ -142,7 +142,7 @@ will become apparent in \Fref{sec:FeatureExtraction}.
 The architecture of a traditional speaker recognition system is illustrated in
 \Fref{fig:SystemArchitecture}. Essentially, a voice sample is input into the
 system. Then the system tries to extract useful \emph{features} from the input.
-Next the system tries to match the extracted features with the models it
+Next, the system tries to match the extracted features with the models it
 already has stored. Finally, the system makes a decision in the form of a claim
 verification or an identification. Each of those steps are described in one of
 the following sections.
@@ -187,11 +187,11 @@ classify the features we can extract into \emph{High-Level Features} and
 
 High-level features in the context of speech processing usually means
 linguistic features. Such as the words used in the speech, the frequency of the
-used words, the pauses that the speaker makes and so on. Those features are not
-very useful in most applications because they require long speeches to extract
-meaningful information. Moreover, they are subject to voluntary variations in
-speech. For instance, one can change the way one speaks to get around speaker
-verification systems that matches high-level features.
+used words, the pauses that the speaker makes, and so on. Those features are
+not very useful in most applications because they require long speeches to
+extract meaningful information. Moreover, they are subject to voluntary
+variations in speech. For instance, one can change the way one speaks to get
+around speaker identification systems that matches high-level features.
 
 \subsubsection{Low-Level Features}
 
@@ -261,8 +261,8 @@ H_{m}(k) =
 \end{cases}
 \end{equation}
 
-Where $f(m)$ is the evenly spaced Mel frequency which be computed using a look
-up table or using the following approximation:
+Where $f(m)$ is the evenly spaced Mel frequencies which can be computed using a
+look-up-table or by using the following approximation:
 
 \begin{equation}
 f(m) = 700(10^{m / 2595} - 1)
@@ -284,7 +284,7 @@ subtracting the mean of the coefficients from each frame.
 \emph{Pattern Matching} is the process of matching the extracted features
 against some stored \emph{Speaker Models} as well as generating the speaker
 models themselves. A speaker model is like a template that describe the
-characteristics of the speaker. Those models facilitate the matching processes
+characteristics of the speaker. Those models facilitate the matching process
 instead of storing the extracted features of the training samples themselves.
 Many methods exists for constructing speaker models.
 
@@ -331,9 +331,9 @@ classify the feature vectors in speaker identification systems.  In
 through its spectrogram. In \autocite{Ravanelli2018}, the system is able to
 classify the input raw sound samples, achieving superior performance compared
 to other methods. This system is called \emph{SincNet}. Finally, a non-CNN
-method was described in \autocite{Toshniwal2017}, \emph{Automatic Speech
-Recognition (ASR)} was used to transcribe speech and use it to aid in the
-classification process.
+method was described in \autocite{Toshniwal2017}, in which \emph{Automatic
+Speech Recognition (ASR)} was used to transcribe speech and use it to aid in
+the classification process.
 
 \section{Implementation}
 \label{sec:Implementation}
@@ -382,7 +382,7 @@ highest probability as the identified speaker.
 \label{fig:NeuralNetwork}
 \end{figure}
 
-By evaluating the model on a testing data set, our results shows about a 93\%
+By evaluating the model on a testing data set, our results shows about a 97\%
 accuracy in prediction of test data.
 
 \section{Conclusion}
